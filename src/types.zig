@@ -57,6 +57,8 @@ pub const Buffer = struct {
     uri: ?[]const u8 = null,
     /// The length of the buffer in bytes.
     byte_length: usize,
+    /// TODO
+    data: ?[]const u8 = null,
 };
 
 /// A view into a buffer generally representing a subset of the buffer.
@@ -87,7 +89,7 @@ pub const Accessor = struct {
     /// Computed stride: @sizeOf(component_type) * type.
     stride: usize,
     /// The number of elements referenced by this accessor.
-    count: i32,
+    count: u32,
     /// Specifies whether integer data values are normalized before usage.
     normalized: bool = false,
 };
@@ -440,7 +442,7 @@ pub const Camera = struct {
     /// perspective projection matrix.
     pub const Perspective = struct {
         /// The aspect ratio of the field of view.
-        aspect_ratio: f32,
+        aspect_ratio: ?f32,
         /// The vertical field of view in radians.
         /// This value should be less than π.
         yfov: f32,
@@ -470,7 +472,7 @@ pub const Camera = struct {
     };
 
     name: []const u8,
-    type: union {
+    type: union(enum) {
         perspective: Perspective,
         orthographic: Orthographic,
     },

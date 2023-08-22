@@ -261,12 +261,12 @@ pub fn getLocalTransform(node: Node) Mat4 {
     };
 }
 
-pub fn getGlobalTransform(data: *const Data, node: Node) Mat4 {
+pub fn getGlobalTransform(self: Self, node: Node) Mat4 {
     var parent_index = node.parent;
     var node_transform: Mat4 = getLocalTransform(node);
 
     while (parent_index != null) {
-        const parent = data.nodes.items[parent_index.?];
+        const parent = self.data.nodes.items[parent_index.?];
         const parent_transform = getLocalTransform(parent);
 
         node_transform = helpers.mul(parent_transform, node_transform);
@@ -712,7 +712,7 @@ fn parseGltfJson(self: *Self, gltf_json: []const u8) !void {
             }
 
             if (object.get("count")) |count| {
-                accessor.count = @as(i32, @intCast(count.integer));
+                accessor.count = @as(u32, @intCast(count.integer));
             } else {
                 panic("Accessor's count is missing.", .{});
             }
