@@ -116,7 +116,7 @@ pub const Skin = struct {
 };
 
 /// Reference to a texture.
-const TextureInfo = struct {
+pub const TextureInfo = struct {
     /// The index of the texture.
     index: Index,
     /// The set index of texture’s TEXCOORD attribute
@@ -125,7 +125,7 @@ const TextureInfo = struct {
 };
 
 /// Reference to a normal texture.
-const NormalTextureInfo = struct {
+pub const NormalTextureInfo = struct {
     /// The index of the texture.
     index: Index,
     /// The set index of texture’s TEXCOORD attribute
@@ -137,7 +137,7 @@ const NormalTextureInfo = struct {
 };
 
 /// Reference to an occlusion texture.
-const OcclusionTextureInfo = struct {
+pub const OcclusionTextureInfo = struct {
     /// The index of the texture.
     index: Index,
     /// The set index of texture’s TEXCOORD attribute
