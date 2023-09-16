@@ -78,7 +78,7 @@ pub const Data = struct {
 arena: *ArenaAllocator,
 data: Data,
 
-glb_binary: ?[]const u8 = null,
+glb_binary: ?[]align(4) const u8 = null,
 
 pub fn init(allocator: Allocator) Self {
     var arena = allocator.create(ArenaAllocator) catch {
@@ -360,7 +360,7 @@ fn parseGlb(self: *Self, glb_buffer: []const u8) !void {
     };
 
     try self.parseGltfJson(json_buffer);
-    self.glb_binary = binary_buffer;
+    self.glb_binary = @alignCast(binary_buffer);
 }
 
 fn parseGltfJson(self: *Self, gltf_json: []const u8) !void {

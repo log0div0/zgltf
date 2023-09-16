@@ -58,7 +58,7 @@ pub const Buffer = struct {
     /// The length of the buffer in bytes.
     byte_length: usize,
     /// TODO
-    data: ?[]const u8 = null,
+    data: ?[]align(4) const u8 = null,
 };
 
 /// A view into a buffer generally representing a subset of the buffer.
@@ -242,7 +242,10 @@ pub const Image = struct {
     /// Note: This field must not be defined when uri is defined.
     buffer_view: ?Index = null,
     // TODO
-    data: ?*opaque{} = null,
+    data: ?[]const f32 = null,
+    w: usize = 0,
+    h: usize = 0,
+    c: usize = 0,
 };
 
 pub const WrapMode = enum(u32) {
