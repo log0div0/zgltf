@@ -1159,7 +1159,7 @@ fn parseGltfJson(self: *Self, gltf_json: []const u8) !void {
                 sampler.wrap_s = @as(WrapMode, @enumFromInt(wrap_s.integer));
             }
 
-            if (object.get("wrapt")) |wrap_t| {
+            if (object.get("wrapT")) |wrap_t| {
                 sampler.wrap_t = @as(WrapMode, @enumFromInt(wrap_t.integer));
             }
 

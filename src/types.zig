@@ -246,6 +246,7 @@ pub const Image = struct {
     w: usize = 0,
     h: usize = 0,
     c: usize = 0,
+    actual_c: usize = 0,
 };
 
 pub const WrapMode = enum(u32) {
